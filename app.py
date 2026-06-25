@@ -158,6 +158,23 @@ st.markdown("""
         border-radius: 12px !important;
         border: 1px solid #252545 !important;
     }
+
+    /* 全局文字颜色 */
+    p, span, label, .stCaption, .stMarkdown {
+        color: #c0c0d0 !important;
+    }
+    .stCaption { color: #888 !important; }
+
+    /* 干掉残留白色 */
+    .main, .block-container, [data-testid="stAppViewContainer"] {
+        background: transparent !important;
+    }
+    section[data-testid="stSidebar"] * {
+        color: #c0c0d0 !important;
+    }
+    section[data-testid="stSidebar"] .stCaption {
+        color: #888 !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
