@@ -49,27 +49,115 @@ st.set_page_config(
 st.markdown("""
 <style>
     footer, #MainMenu { visibility: hidden; }
-    .stApp { background: linear-gradient(160deg, #080810, #0d0d20, #101028); }
+
+    /* 全局背景 */
+    .stApp { background: linear-gradient(160deg, #080810 0%, #0d0d20 40%, #101028 100%) !important; }
+
+    /* 滚动条 */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #2a2a45; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3d3d60; }
+
+    /* 标题 */
+    h1 { font-size: 1.6rem; font-weight: 700; color: #e4e4e7; letter-spacing: -0.5px; }
+    h2 { color: #d0d0dc; font-size: 1.2rem; }
+    h3 { color: #b0b0c8; font-size: 1rem; }
+
+    /* 卡片 */
     .card {
-        background: #14142b; border: 1px solid #1e1e3a;
-        border-radius: 16px; padding: 20px; margin-bottom: 16px;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+        background: #14142b;
+        border: 1px solid #1e1e3a;
+        border-radius: 18px;
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+        animation: fadeIn 0.4s ease-out;
     }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 指标卡片 */
     .metric-box {
-        background: linear-gradient(135deg, #1a1a3a, #14142b);
-        border: 1px solid #2a2a55; border-radius: 14px;
-        padding: 16px; text-align: center;
+        background: linear-gradient(135deg, #15153a, #1a1a42);
+        border: 1px solid #2a2a55;
+        border-radius: 16px;
+        padding: 20px 16px;
+        text-align: center;
+        transition: transform 0.2s, box-shadow 0.2s;
     }
-    .metric-box .value { font-size: 1.8rem; font-weight: 700; color: #a78bfa; }
-    .metric-box .label { font-size: 0.75rem; color: #888; text-transform: uppercase; }
-    h1, h2, h3 { color: #e4e4e7; }
-    .stButton>button { border-radius: 10px; }
+    .metric-box:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(99,102,241,0.15);
+    }
+    .metric-box .value {
+        font-size: 2rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #a78bfa, #818cf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .metric-box .label {
+        font-size: 0.72rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 4px;
+    }
+
+    /* 按钮 */
+    .stButton > button {
+        border-radius: 10px !important;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+    .stButton > button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* 上传区 */
+    [data-testid="stFileUploadDropzone"] {
+        border: 2px dashed #252545 !important;
+        border-radius: 14px !important;
+        padding: 16px !important;
+        background: rgba(99,102,241,0.03) !important;
+        transition: all 0.2s;
+    }
+    [data-testid="stFileUploadDropzone"]:hover {
+        border-color: #818cf8 !important;
+        background: rgba(99,102,241,0.06) !important;
+    }
+
+    /* 侧边栏 */
     [data-testid="stSidebar"] {
         background: linear-gradient(175deg, #0a0a18, #0f0f24) !important;
         border-right: 1px solid #1c1c35 !important;
     }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-thumb { background: #2a2a45; border-radius: 3px; }
+    [data-testid="stSidebar"] .stButton button { font-size: 0.82rem !important; }
+    [data-testid="stSidebar"] hr { border-color: #1c1c35 !important; }
+
+    /* 数据表格 */
+    [data-testid="stDataFrame"] {
+        border-radius: 12px !important;
+        border: 1px solid #1e1e3a !important;
+    }
+
+    /* 展开区 */
+    .stExpander {
+        border: 1px solid #1e1e3a !important;
+        border-radius: 14px !important;
+        background: #14142b !important;
+    }
+
+    /* 空状态 */
+    .stInfo, .stSuccess, .stWarning, .stError {
+        border-radius: 12px !important;
+        border: 1px solid #252545 !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
