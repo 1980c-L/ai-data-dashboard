@@ -160,20 +160,15 @@ st.markdown("""
     }
 
     /* 全局文字颜色 */
-    p, span, label, .stCaption, .stMarkdown {
+    .stCaption, .stMarkdown p, .stMarkdown span {
         color: #c0c0d0 !important;
     }
     .stCaption { color: #888 !important; }
 
-    /* 干掉残留白色 */
-    .main, .block-container, [data-testid="stAppViewContainer"] {
-        background: transparent !important;
-    }
-    section[data-testid="stSidebar"] * {
-        color: #c0c0d0 !important;
-    }
+    /* 侧边栏文字 */
+    section[data-testid="stSidebar"] .stMarkdown,
     section[data-testid="stSidebar"] .stCaption {
-        color: #888 !important;
+        color: #b0b0c0 !important;
     }
 </style>
 """, unsafe_allow_html=True)
