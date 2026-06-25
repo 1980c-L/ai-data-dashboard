@@ -3,3 +3,4 @@ test_pipeline.py
 test_pipeline2.py
 test_sales.csv
 .env
+chart.png
