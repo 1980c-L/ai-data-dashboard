@@ -1,4 +1,4 @@
-"""
+﻿"""
 AI 数据分析仪表盘
 上传 CSV/Excel → 自动分析 → 图表 + 洞察报告
 """
@@ -16,7 +16,7 @@ from io import BytesIO, StringIO
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(Path(__file__).parent / ".env")
 
 # ── 供应商配置 ─────────────────────────────────────────────
 PROVIDERS = {
@@ -181,15 +181,16 @@ info: {info_str}
     "key_metrics": [{{"name": "指标名", "value": "值"}}],
     "insights": ["发现1", "发现2", "发现3"],
     "suggestions": ["建议1", "建议2"],
-    "chart_code": "生成一张最有价值的图表的 Python matplotlib 代码（用 Agg 后端，savefig 到 chart.png）"
+    "chart_code": "生成一张最有价值的图表的 Python matplotlib 代码"
 }}
 
-图表代码要求：
+图表代码要求（代码必须可执行，所有字典 key 和字符串值都要加引号）：
 - import matplotlib; matplotlib.use('Agg')
 - plt.figure(figsize=(10, 5))
 - 使用 df 变量（已预加载数据）
 - 深色背景风格
 - plt.savefig('chart.png', dpi=100, bbox_inches='tight', facecolor='#14142b')
+- 中文字体：plt.rcParams['font.sans-serif'] = ['SimHei']（注意加引号，不能写成 [SimHei]）
 - 不要 plt.show()
 """
 
